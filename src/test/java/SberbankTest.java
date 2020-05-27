@@ -20,5 +20,7 @@ public class SberbankTest extends BaseSettingsTest {
 		//Выбрать – Путешествие и покупки
 		navigator.clickByXPath(navigator.insuranceForTravellersXPath);
 		navigator.printTitleAndURL();
+		//Проверить наличие на странице заголовка – Страхование путешественников
+		navigator.checkTheText(navigator.textAboutInsuranceOfTraveller);
 	}
 }
