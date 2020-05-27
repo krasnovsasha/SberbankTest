@@ -72,8 +72,8 @@ public class NavigateTest extends BaseSettingsTest {
 		getDriver().navigate().refresh();
 	}
 
-	protected void checkTheText(String XPath) {
+	protected void checkTheText(String XPath,String expected) {
 		String result  = getDriver().findElement(By.xpath(XPath)).getText();
-		Assert.assertThat("Текст на странице не соответствует ожидаемому",result, Is.is("Страхование путешественников"));
+		Assert.assertThat("Текст на странице не соответствует ожидаемому",result, Is.is(expected));
 	}
 }
