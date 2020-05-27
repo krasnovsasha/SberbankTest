@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseSettingsTest {
 	private static WebDriver driver;
 	private static WebDriverWait wait;
+	protected static NavigateTest navigator;
 	private static String OS;
 	private final static String driverChrome = "webdriver.chrome.driver";
 	private final static String driverFirefox = "webdriver.gecko.driver";
@@ -34,6 +35,7 @@ public class BaseSettingsTest {
 	@BeforeClass
 	public static void setUp() throws Exception {
 		chooseBrowser(Browser.CHROME);
+		navigator = new NavigateTest();
 		wait = new WebDriverWait(driver, 10);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);

@@ -21,7 +21,7 @@ public class NavigateTest extends BaseSettingsTest {
 		System.out.println(getDriver().getTitle() + "\n" + getDriver().getCurrentUrl());
 	}
 
-	protected void goToPage(String page) {
+	protected static void goToPage(String page) {
 		getDriver().get(page);
 	}
 
@@ -29,6 +29,7 @@ public class NavigateTest extends BaseSettingsTest {
 		try {
 			getDriver().findElement(By.xpath(XPath)).click();
 		} catch (ElementClickInterceptedException e) {
+			System.out.println("Клик по элементу" +getDriver() + " через findElement() не удался, попытка через JSExecutor");
 			clickByJS(XPath);
 		}
 	}

@@ -11,7 +11,6 @@ import org.junit.Test;
 public class SberbankTest extends BaseSettingsTest {
 	@Test
 	public void sberbankTest() {
-		NavigateTest navigator = new NavigateTest();
 		//Перейти на страницу http://www.sberbank.ru/ru/person
 		navigator.goToPage(navigator.urlSBMainPage);
 		navigator.printTitleAndURL();
@@ -19,7 +18,6 @@ public class SberbankTest extends BaseSettingsTest {
 		navigator.clickByXPath(navigator.insuranceMainPageXPath);
 		navigator.printTitleAndURL();
 		//Выбрать – Путешествие и покупки
-//		navigator.clickByJS(navigator.insuranceForTravellersXPath);
 		navigator.clickByXPath(navigator.insuranceForTravellersXPath);
 		navigator.printTitleAndURL();
 	}
