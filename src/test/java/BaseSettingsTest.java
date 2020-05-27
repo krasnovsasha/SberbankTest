@@ -45,7 +45,18 @@ public class BaseSettingsTest {
 	public static void tearDown() throws Exception {
 		driver.quit();
 	}
-
+	private static void chooseBrowser(Browser browser) {
+		switch (browser) {
+			case CHROME:
+				setUpBrowser(driverChrome);
+				driver = new ChromeDriver();
+				break;
+			case FIREFOX:
+				setUpBrowser(driverFirefox);
+				driver = new FirefoxDriver();
+				break;
+		}
+	}
 	private static void setUpBrowser(String driverBrowserName) {
 		OS = System.getProperty("os.name").toLowerCase();
 		String[] osName = OS.split("\\s");
@@ -70,18 +81,15 @@ public class BaseSettingsTest {
 						break;
 				}
 				break;
-		}
-	}
-
-	private static void chooseBrowser(Browser browser) {
-		switch (browser) {
-			case CHROME:
-				setUpBrowser(driverChrome);
-				driver = new ChromeDriver();
-				break;
-			case FIREFOX:
-				setUpBrowser(driverFirefox);
-				driver = new FirefoxDriver();
+			case "mac":
+				switch (driverBrowserName) {
+					case "webdriver.chrome.driver":
+						System.setProperty(driverBrowserName, pathToDriverChromeMac);
+						break;
+					case "webdriver.gecko.driver":
+						System.setProperty(driverBrowserName, pathToDriverFirefoxMac);
+						break;
+				}
 				break;
 		}
 	}
