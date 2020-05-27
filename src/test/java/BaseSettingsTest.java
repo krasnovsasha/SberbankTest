@@ -1,12 +1,8 @@
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -14,20 +10,22 @@ import java.util.concurrent.TimeUnit;
 public class BaseSettingsTest {
 	private static WebDriver driver;
 	private static WebDriverWait wait;
-	private static WebElement element;
-	private static JavascriptExecutor executor;
 	private static String OS;
-	private static String driverChrome = "webdriver.chrome.driver";
-	private static String driverFirefox = "webdriver.gecko.driver";
-	private static String pathToDriverChromeLin = "drivers/driversLin/chromedriver";
-	private static String pathToDriverChromeWin = "drivers/driversWin/chromedriver.exe";
-	private static String pathToDriverChromeMac = "drivers/driversMac/chromedriver";
-	private static String pathToDriverFirefoxLin = "drivers/driversLin/geckodriver";
-	private static String pathToDriverFirefoxWin = "drivers/driversWin/geckodriver.exe";
-	private static String pathToDriverFirefoxMac = "drivers/driversMac/geckodriver";
-	protected String urlSBMainPage = "http://www.sberbank.ru/ru/person";
-	protected String insuranceMainPageXPath = "//span[text()='Страхование']";
-	protected String insuranceForTravellersXPath = "//a[@class='lg-menu__sub-link' and text()='Страхование путешественников']";
+	private final static String driverChrome = "webdriver.chrome.driver";
+	private final static String driverFirefox = "webdriver.gecko.driver";
+	private final static String pathToDriverChromeLin = "drivers/driversLin/chromedriver";
+	private final static String pathToDriverChromeMac = "drivers/driversMac/chromedriver";
+	private final static String pathToDriverFirefoxLin = "drivers/driversLin/geckodriver";
+	private final static String pathToDriverFirefoxWin = "drivers/driversWin/geckodriver.exe";
+	private final static String pathToDriverFirefoxMac = "drivers/driversMac/geckodriver";
+
+	public static WebDriver getDriver() {
+		return driver;
+	}
+
+	public static WebDriverWait getWait() {
+		return wait;
+	}
 
 	private enum Browser {
 		CHROME, FIREFOX
@@ -45,6 +43,7 @@ public class BaseSettingsTest {
 	public static void tearDown() throws Exception {
 		driver.quit();
 	}
+
 	private static void chooseBrowser(Browser browser) {
 		switch (browser) {
 			case CHROME:
@@ -57,6 +56,7 @@ public class BaseSettingsTest {
 				break;
 		}
 	}
+
 	private static void setUpBrowser(String driverBrowserName) {
 		OS = System.getProperty("os.name").toLowerCase();
 		String[] osName = OS.split("\\s");
@@ -72,6 +72,7 @@ public class BaseSettingsTest {
 				}
 				break;
 			case "windows":
+				String pathToDriverChromeWin = "drivers/driversWin/chromedriver.exe";
 				switch (driverBrowserName) {
 					case "webdriver.chrome.driver":
 						System.setProperty(driverBrowserName, pathToDriverChromeWin);
@@ -92,34 +93,5 @@ public class BaseSettingsTest {
 				}
 				break;
 		}
-	}
-
-	protected void goToPage(String page) {
-		driver.get(page);
-	}
-
-	protected void clickByXPath(String XPath) {
-		driver.findElement(By.xpath(XPath)).click();
-	}
-
-	protected void clickByID(String ID) {
-		driver.findElement(By.id(ID)).click();
-	}
-
-	protected void waitUntilClickable(String XPath){
-		WebElement element = driver.findElement(By.xpath(XPath));
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-	}
-	protected void waitUntilVisible(String XPath){
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(XPath)));
-	}
-	protected  void waitUntilPresent(String XPath){
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(XPath)));
-	}
-
-	protected void clickByJS(String XPath){
-		element = driver.findElement(By.xpath(XPath));
-		executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();",element);
 	}
 }

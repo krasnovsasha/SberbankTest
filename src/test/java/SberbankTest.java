@@ -1,13 +1,26 @@
+/*
+Here is the description
+	-first- choose browser you wish to use, for that
+		go to the class BaseSettingsTest -> find setUp() method ->
+			-> find chooseBrowser() method -> choose your browser from list
+	-second- run sberbankTest() method
+ */
+
 import org.junit.Test;
 
 public class SberbankTest extends BaseSettingsTest {
 	@Test
 	public void sberbankTest() {
+		NavigateTest navigator = new NavigateTest();
 		//Перейти на страницу http://www.sberbank.ru/ru/person
-		goToPage(urlSBMainPage);
+		navigator.goToPage(navigator.urlSBMainPage);
+		navigator.printTitleAndURL();
 		//Нажать на – Страхование
-		clickByXPath(insuranceMainPageXPath);
+		navigator.clickByXPath(navigator.insuranceMainPageXPath);
+		navigator.printTitleAndURL();
 		//Выбрать – Путешествие и покупки
-		clickByJS(insuranceForTravellersXPath);
+//		navigator.clickByJS(navigator.insuranceForTravellersXPath);
+		navigator.clickByXPath(navigator.insuranceForTravellersXPath);
+		navigator.printTitleAndURL();
 	}
 }
