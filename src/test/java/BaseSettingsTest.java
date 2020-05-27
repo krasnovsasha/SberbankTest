@@ -19,12 +19,12 @@ public class BaseSettingsTest {
 	private static String OS;
 	private static String driverChrome = "webdriver.chrome.driver";
 	private static String driverFirefox = "webdriver.gecko.driver";
-	private static String pathToDriverChromeLin = "drivers/chromedriver";
-	private static String pathToDriverChromeWin = "drivers/chromedriver.exe";
-	private static String pathToDriverChromeMac = "drivers/chromedriverMac";
-	private static String pathToDriverFirefoxLin = "drivers/geckodriver";
-	private static String pathToDriverFirefoxWin = "drivers/geckodriver.exe";
-	private static String pathToDriverFirefoxMac = "drivers/geckodriverMac";
+	private static String pathToDriverChromeLin = "drivers/driversLin/chromedriver";
+	private static String pathToDriverChromeWin = "drivers/driversWin/chromedriver.exe";
+	private static String pathToDriverChromeMac = "drivers/driversMac/chromedriver";
+	private static String pathToDriverFirefoxLin = "drivers/driversLin/geckodriver";
+	private static String pathToDriverFirefoxWin = "drivers/driversWin/geckodriver.exe";
+	private static String pathToDriverFirefoxMac = "drivers/driversMac/geckodriver";
 	protected String urlSBMainPage = "http://www.sberbank.ru/ru/person";
 	protected String insuranceMainPageXPath = "//span[text()='Страхование']";
 	protected String insuranceForTravellersXPath = "//a[@class='lg-menu__sub-link' and text()='Страхование путешественников']";
@@ -35,7 +35,7 @@ public class BaseSettingsTest {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-		chooseBrowser(Browser.FIREFOX);
+		chooseBrowser(Browser.CHROME);
 		wait = new WebDriverWait(driver, 10);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
