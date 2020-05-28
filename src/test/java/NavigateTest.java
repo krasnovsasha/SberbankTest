@@ -11,7 +11,7 @@ public class NavigateTest extends BaseSettingsTest {
 	protected String urlSBMainPage = "http://www.sberbank.ru/ru/person";
 	protected String insuranceMainPageXPath = "//span[text()='Страхование']";
 	protected String insuranceForTravellersXPath = "//a[@class='lg-menu__sub-link' and text()='Страхование путешественников']";
-	protected String textAboutInsuranceOfTraveller = "//div[@class='kit-col_xs_12 kit-col_md_0 kit-col_lg_6 kit-col_xs-bottom_20 kit-col_lg-bottom_10 kit-col_xs-top_20 kit-col_lg-top_40']//h2";
+	protected String textAboutInsuranceOfTraveller = "//div[@class='product-teaser-full-width__descr']/parent::div/parent::div//h2";
 	protected String expectedTextInsurancePage = "Страхование путешественников";
 	protected String buttonArrangeOnlineXPath = "//b[text()='Оформить онлайн']/parent::a";
 	protected String minimalInsuranceXPath = "//h3[text()='Минимальная']/parent::div";
