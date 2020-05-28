@@ -49,11 +49,11 @@ public class BaseSettingsTest {
 			case "linux":
 				switch (browserName) {
 					case "chrome":
-						System.setProperty("webdriver.chrome.driver", pathToDriverChromeLin);
+						System.setProperty(driverChrome, pathToDriverChromeLin);
 						driver = new ChromeDriver();
 						break;
 					case "firefox":
-						System.setProperty("webdriver.gecko.driver", pathToDriverFirefoxLin);
+						System.setProperty(driverFirefox, pathToDriverFirefoxLin);
 						driver = new FirefoxDriver();
 						break;
 				}
@@ -62,11 +62,11 @@ public class BaseSettingsTest {
 				String pathToDriverChromeWin = "drivers/driversWin/chromedriver.exe";
 				switch (browserName) {
 					case "chrome":
-						System.setProperty("webdriver.chrome.driver", pathToDriverChromeWin);
+						System.setProperty(driverChrome, pathToDriverChromeWin);
 						driver = new ChromeDriver();
 						break;
 					case "firefox":
-						System.setProperty("webdriver.gecko.driver", pathToDriverFirefoxWin);
+						System.setProperty(driverFirefox, pathToDriverFirefoxWin);
 						driver = new FirefoxDriver();
 						break;
 				}
@@ -74,11 +74,11 @@ public class BaseSettingsTest {
 			case "mac":
 				switch (browserName) {
 					case "chrome":
-						System.setProperty("webdriver.chrome.driver", pathToDriverChromeMac);
+						System.setProperty(driverChrome, pathToDriverChromeMac);
 						driver = new ChromeDriver();
 						break;
 					case "firefox":
-						System.setProperty("webdriver.gecko.driver", pathToDriverFirefoxMac);
+						System.setProperty(driverFirefox, pathToDriverFirefoxMac);
 						driver = new FirefoxDriver();
 						break;
 				}
