@@ -14,10 +14,13 @@ public class BaseSettingsTest {
 	private final static String driverChrome = "webdriver.chrome.driver";
 	private final static String driverFirefox = "webdriver.gecko.driver";
 	private final static String pathToDriverChromeLin = "drivers/driversLin/chromedriver";
-	private final static String pathToDriverChromeMac = "drivers/driversMac/chromedriver";
 	private final static String pathToDriverFirefoxLin = "drivers/driversLin/geckodriver";
-	private final static String pathToDriverFirefoxWin = "drivers/driversWin/geckodriver.exe";
+	private final static String pathToDriverChromeMac = "drivers/driversMac/chromedriver";
 	private final static String pathToDriverFirefoxMac = "drivers/driversMac/geckodriver";
+	private final static String pathToDriverChromeWin = "drivers/driversWin/chromedriver.exe";
+	private final static String pathToDriverFirefoxWin = "drivers/driversWin/geckodriver.exe";
+
+
 
 	public static WebDriver getDriver() {
 		return driver;
