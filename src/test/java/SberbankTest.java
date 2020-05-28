@@ -15,18 +15,10 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class SberbankTest extends BaseSettingsTest {
-
 	@Parameterized.Parameters
 	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][]{
-				{"Ivanov", "Ivan", "10.10.1995","Сидоров", "Петр", "Васильевич","15.07.1993", "1111", "222222","18.02.2010","Выдан государственным органом "},
-				{"Petrov", "Petr", "15.05.1997","Белов", "Владимир", "Семеныч","01.09.1999", "4455", "555555","28.06.2012","Выдан тестовым отделением тестового органа"},
-				{"Smirnov", "Boris", "25.04.2000","Антонов", "Виктор", "Павлович","12.12.2012", "7777", "8887772","09.06.2014","Выдан тестовым подразделением"},
-
-
-		});
+		return Arrays.asList(new Object[][]{{"Ivanov", "Ivan", "10.10.1995", "Сидоров", "Петр", "Васильевич", "15.07.1993", "1111", "222222", "18.02.2010", "Выдан государственным органом "}, {"Petrov", "Petr", "15.05.1997", "Белов", "Владимир", "Семеныч", "01.09.1999", "4455", "555555", "28.06.2012", "Выдан тестовым отделением тестового органа"}, {"Smirnov", "Boris", "25.04.2000", "Антонов", "Виктор", "Павлович", "12.12.2012", "7777", "8887772", "09.06.2014", "Выдан тестовым подразделением"},});
 	}
-
 
 	@Parameterized.Parameter
 	public String surname;
@@ -53,7 +45,6 @@ public class SberbankTest extends BaseSettingsTest {
 
 	@Test
 	public void sberbankTest() {
-
 		//Перейти на страницу http://www.sberbank.ru/ru/person
 		navigator.goToPage(navigator.urlSBMainPage);
 		//Нажать на – Страхование

@@ -1,12 +1,8 @@
 import org.hamcrest.core.Is;
 import org.junit.Assert;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 public class NavigateTest extends BaseSettingsTest {
 	private static WebElement element;
@@ -49,8 +45,7 @@ public class NavigateTest extends BaseSettingsTest {
 		} catch (ElementClickInterceptedException e) {
 			System.out.println("Клик по элементу " + getDriver() + " через findElement() не удался, попытка через JSExecutor");
 			clickByJS(XPath);
-		}
-		catch (TimeoutException e) {
+		} catch (TimeoutException e) {
 			System.out.println("Page didn't load within 15 seconds");
 		}
 	}
@@ -94,6 +89,7 @@ public class NavigateTest extends BaseSettingsTest {
 		String result = getDriver().findElement(By.xpath(XPath)).getText();
 		Assert.assertThat("Текст на странице не соответствует ожидаемому", result, Is.is(expected));
 	}
+
 	void checkTheValue(String XPath, String expected) {
 		String result = getDriver().findElement(By.xpath(XPath)).getAttribute("value");
 		Assert.assertThat("Текст на странице не соответствует ожидаемому", result, Is.is(expected));
@@ -109,14 +105,17 @@ public class NavigateTest extends BaseSettingsTest {
 		executor = (JavascriptExecutor) getDriver();
 		executor.executeScript("arguments[0].scrollIntoView();", element);
 	}
-	void sendText(String XPath,String text){
+
+	void sendText(String XPath, String text) {
 		getDriver().findElement(By.xpath(XPath)).sendKeys(text);
 	}
-	void submit(String XPath){
+
+	void submit(String XPath) {
 		getDriver().findElement(By.xpath(XPath)).submit();
 	}
-	void checkTheError(String message,String XPath){
+
+	void checkTheError(String message, String XPath) {
 		Boolean el = getDriver().findElement(By.xpath(XPath)).isDisplayed();
-		Assert.assertTrue(message,el);
+		Assert.assertTrue(message, el);
 	}
 }
