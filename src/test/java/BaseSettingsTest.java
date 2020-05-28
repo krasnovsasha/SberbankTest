@@ -59,7 +59,6 @@ public class BaseSettingsTest {
 				}
 				break;
 			case "windows":
-				String pathToDriverChromeWin = "drivers/driversWin/chromedriver.exe";
 				switch (browserName) {
 					case "chrome":
 						System.setProperty(driverChrome, pathToDriverChromeWin);
