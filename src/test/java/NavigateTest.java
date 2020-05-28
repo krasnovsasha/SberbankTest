@@ -34,14 +34,13 @@ public class NavigateTest extends BaseSettingsTest {
 	void printTitleAndURL() {
 		System.out.println(getDriver().getTitle() + "\n" + getDriver().getCurrentUrl());
 	}
-
 	void goToPage(String page) {
 		getDriver().get(page);
 	}
 
 	void clickByXPath(String XPath) {
 		try {
-			getDriver().findElement(By.xpath(XPath)).click();
+			getWait().until(ExpectedConditions.elementToBeClickable(By.xpath(XPath))).click();
 		} catch (ElementClickInterceptedException e) {
 			System.out.println("Клик по элементу " + getDriver() + " через findElement() не удался, попытка через JSExecutor");
 			clickByJS(XPath);
