@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.concurrent.TimeUnit;
 
 public class BaseSettingsTest {
@@ -20,8 +21,6 @@ public class BaseSettingsTest {
 	private final static String pathToDriverChromeWin = "drivers/driversWin/chromedriver.exe";
 	private final static String pathToDriverFirefoxWin = "drivers/driversWin/geckodriver.exe";
 
-
-
 	public static WebDriver getDriver() {
 		return driver;
 	}
@@ -30,13 +29,11 @@ public class BaseSettingsTest {
 		return wait;
 	}
 
-	private enum Browser {
-		CHROME, FIREFOX
-	}
-
 	@BeforeClass
 	public static void setUp() throws Exception {
-		chooseBrowser(Browser.CHROME);
+		String browser = System.getProperty("browser", "chrome");
+		System.out.println(browser);
+		setUpBrowser(browser);
 		navigator = new NavigateTest();
 		wait = new WebDriverWait(driver, 20);
 		driver.manage().window().maximize();
@@ -48,51 +45,44 @@ public class BaseSettingsTest {
 		driver.quit();
 	}
 
-	private static void chooseBrowser(Browser browser) {
-		switch (browser) {
-			case CHROME:
-				setUpBrowser(driverChrome);
-				driver = new ChromeDriver();
-				break;
-			case FIREFOX:
-				setUpBrowser(driverFirefox);
-				driver = new FirefoxDriver();
-				break;
-		}
-	}
-
-	private static void setUpBrowser(String driverBrowserName) {
+	private static void setUpBrowser(String browserName) {
 		OS = System.getProperty("os.name").toLowerCase();
 		String[] osName = OS.split("\\s");
 		switch (osName[0]) {
 			case "linux":
-				switch (driverBrowserName) {
-					case "webdriver.chrome.driver":
-						System.setProperty(driverBrowserName, pathToDriverChromeLin);
+				switch (browserName) {
+					case "chrome":
+						System.setProperty("webdriver.chrome.driver", pathToDriverChromeLin);
+						driver = new ChromeDriver();
 						break;
-					case "webdriver.gecko.driver":
-						System.setProperty(driverBrowserName, pathToDriverFirefoxLin);
+					case "firefox":
+						System.setProperty("webdriver.gecko.driver", pathToDriverFirefoxLin);
+						driver = new FirefoxDriver();
 						break;
 				}
 				break;
 			case "windows":
 				String pathToDriverChromeWin = "drivers/driversWin/chromedriver.exe";
-				switch (driverBrowserName) {
-					case "webdriver.chrome.driver":
-						System.setProperty(driverBrowserName, pathToDriverChromeWin);
+				switch (browserName) {
+					case "chrome":
+						System.setProperty("webdriver.chrome.driver", pathToDriverChromeWin);
+						driver = new ChromeDriver();
 						break;
-					case "webdriver.gecko.driver":
-						System.setProperty(driverBrowserName, pathToDriverFirefoxWin);
+					case "firefox":
+						System.setProperty("webdriver.gecko.driver", pathToDriverFirefoxWin);
+						driver = new FirefoxDriver();
 						break;
 				}
 				break;
 			case "mac":
-				switch (driverBrowserName) {
-					case "webdriver.chrome.driver":
-						System.setProperty(driverBrowserName, pathToDriverChromeMac);
+				switch (browserName) {
+					case "chrome":
+						System.setProperty("webdriver.chrome.driver", pathToDriverChromeMac);
+						driver = new ChromeDriver();
 						break;
-					case "webdriver.gecko.driver":
-						System.setProperty(driverBrowserName, pathToDriverFirefoxMac);
+					case "firefox":
+						System.setProperty("webdriver.gecko.driver", pathToDriverFirefoxMac);
+						driver = new FirefoxDriver();
 						break;
 				}
 				break;

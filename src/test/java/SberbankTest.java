@@ -1,9 +1,7 @@
 /*
-Here is the description
-	-first- choose browser you wish to use, for that
-		go to the class BaseSettingsTest -> find setUp() method ->
-			-> find chooseBrowser() method -> choose your browser from list
-	-second- run sberbankTest() method
+ for run please use commandline
+ 1) mvn test -Dbrowser=chrome
+ 2) mvn clean test -Dbrowser=firefox
  */
 
 import org.junit.Test;
