@@ -17,7 +17,7 @@ public class SberbankTest extends BaseSettingsTest {
 	public static Collection<Object[]> data() {
 		return Arrays.asList(new Object[][]{{"Ivanov", "Ivan", "10.10.1995", "Сидоров", "Петр", "Васильевич", "10.10.1995", "1111", "222222", "10.10.2015", "Выдан государственным органом "},
 				{"Ivanov", "Ivan", "10.10.1995", "Сидоров", "Петр", "Васильевич", "10.10.1995", "1111", "222222", "10.10.2015", "Выдан государственным органом "},
-				{"Ivanov", "Ivan", "10.10.1995", "Сидоров", "Петр", "Васильевич", "10.10.1995", "1111", "222222", "10.10.2015", "Выдан государственным органом "}});
+				{"Belov", "Alexey", "15.05.1976", "Белов", "Алексей", "Иванович", "12.05.1976", "2215", "234896", "20.05.1996", "Выдан государственным органом исполнительной власти "}});
 	}
 	@Parameterized.Parameter
 	public String surname;
@@ -51,9 +51,11 @@ public class SberbankTest extends BaseSettingsTest {
 		//Выбрать – Путешествие и покупки
 		navigator.clickByXPath(navigator.insuranceForTravellersXPath);
 		//Проверить наличие на странице заголовка – Страхование путешественников
+		navigator.waitUntilVisible(navigator.textAboutInsuranceOfTraveller);
 		navigator.checkTheText(navigator.textAboutInsuranceOfTraveller, navigator.expectedTextInsurancePage);
 		//Нажать на – Оформить Онлайн
 		navigator.waitUntilPresent(navigator.buttonArrangeOnlineXPath);
+		navigator.waitUntilClickable(navigator.buttonArrangeOnlineXPath);
 		navigator.scrollToElement(navigator.buttonArrangeOnlineXPath);
 		navigator.clickByXPath(navigator.buttonArrangeOnlineXPath);
 		//На вкладке – Выбор полиса выбрать сумму страховой защиты – Минимальная
@@ -67,6 +69,7 @@ public class SberbankTest extends BaseSettingsTest {
 		//На вкладке Оформить заполнить поля: Фамилию и Имя, Дату рождения застрахованных
 		//Данные страхователя: Фамилия, Имя, Отчество, Дата рождения, Пол, Паспортные данные
 		//Контактные данные не заполняем
+		navigator.waitUntilVisible(navigator.inputSurname);
 		navigator.waitUntilClickable(navigator.inputSurname);
 		navigator.clickByID("surname_vzr_ins_0");
 		navigator.sendText(navigator.inputSurname, surname);
