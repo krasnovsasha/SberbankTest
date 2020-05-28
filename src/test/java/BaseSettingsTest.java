@@ -35,7 +35,7 @@ public class BaseSettingsTest {
 		navigator = new NavigateTest();
 		wait = new WebDriverWait(driver, 20);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+//		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 	}
 
 	@AfterClass
