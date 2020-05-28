@@ -36,9 +36,9 @@ public class BaseSettingsTest {
 	public static void setUp() throws Exception {
 		chooseBrowser(Browser.CHROME);
 		navigator = new NavigateTest();
-		wait = new WebDriverWait(driver, 10);
+		wait = new WebDriverWait(driver, 20);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 	}
 
 	@AfterClass
