@@ -31,9 +31,7 @@ public class BaseSettingsTest {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-		String browser = System.getProperty("browser", "chrome");
-		System.out.println(browser);
-		setUpBrowser(browser);
+		setUpBrowser(System.getProperty("browser", "chrome"));
 		navigator = new NavigateTest();
 		wait = new WebDriverWait(driver, 20);
 		driver.manage().window().maximize();
